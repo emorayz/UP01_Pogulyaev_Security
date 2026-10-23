@@ -1,0 +1,57 @@
+<Page x:Class="UP01_Pogulyaev_Security.Pages.AddUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Пользователь" Loaded="Page_Loaded">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="620">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Данные пользователя"
+                   Style="{StaticResource HeaderTextStyle}"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Логин" Margin="6" VerticalAlignment="Center"/>
+        <TextBox x:Name="TBLogin" Grid.Row="1" Grid.Column="1" Text="{Binding Login}"
+                 ToolTip="Введите логин" MaxLength="100"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Пароль" Margin="6" VerticalAlignment="Center"/>
+        <TextBox x:Name="TBPass" Grid.Row="2" Grid.Column="1" Text="{Binding Password}"
+                 ToolTip="При добавлении введите пароль, при редактировании — хэш или новый пароль"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Роль" Margin="6" VerticalAlignment="Center"/>
+        <ComboBox x:Name="cmbRole" Grid.Row="3" Grid.Column="1" ToolTip="Выберите роль">
+            <ComboBoxItem Content="User"/>
+            <ComboBoxItem Content="Admin"/>
+        </ComboBox>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="ФИО" Margin="6" VerticalAlignment="Center"/>
+        <TextBox x:Name="TBFio" Grid.Row="4" Grid.Column="1" Text="{Binding FIO}"
+                 ToolTip="Введите ФИО" MaxLength="200"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Отдел" Margin="6" VerticalAlignment="Center"/>
+        <TextBox x:Name="TBDepartment" Grid.Row="5" Grid.Column="1" Text="{Binding Department}"
+                 ToolTip="Введите отдел (необязательно)" MaxLength="100"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Фото (необязательно)" Margin="6" VerticalAlignment="Center"/>
+        <TextBox x:Name="TBPhoto" Grid.Row="6" Grid.Column="1" Text="{Binding Photo}"
+                 ToolTip="Путь к фотографии, например: images/default.png"/>
+
+        <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal">
+            <Button x:Name="ButtonSave" Content="Сохранить" ToolTip="Сохранить данные"
+                    Click="ButtonSave_Click"/>
+            <Button x:Name="ButtonClean" Content="Очистить" ToolTip="Очистить поля формы"
+                    Click="ButtonClean_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

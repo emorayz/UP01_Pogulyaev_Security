@@ -1,0 +1,23 @@
+<Page x:Class="UP01_Pogulyaev_Security.Pages.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Администратор" Loaded="Page_Loaded">
+    <Grid>
+        <TextBlock Text="Панель администратора" Style="{StaticResource HeaderTextStyle}"
+                   VerticalAlignment="Top"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <Button x:Name="BtnTab1" Content="Таблица пользователей" Width="280"
+                    ToolTip="Просмотр и редактирование пользователей"
+                    Click="BtnTab1_Click"/>
+            <Button x:Name="BtnTab2" Content="Таблица категорий угроз" Width="280"
+                    ToolTip="Просмотр и редактирование категорий угроз ИБ"
+                    Click="BtnTab2_Click"/>
+            <Button x:Name="BtnTab3" Content="Таблица инцидентов" Width="280"
+                    ToolTip="Просмотр и редактирование инцидентов ИБ"
+                    Click="BtnTab3_Click"/>
+            <Button x:Name="BtnTab4" Content="Диаграммы и отчёты" Width="280"
+                    ToolTip="Диаграммы и экспорт отчётов в Word, Excel, PDF"
+                    Click="BtnTab4_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
