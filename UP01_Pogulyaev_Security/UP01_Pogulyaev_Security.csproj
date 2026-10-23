@@ -34,7 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <!-- Значок приложения задаётся в Visual Studio: Проект -> Свойства -> Приложение -> Значок (файл icon.ico в папке res/) -->
+  <PropertyGroup>
+    <!-- Значок приложения подключается автоматически, если файл icon.ico лежит в папке проекта -->
+    <ApplicationIcon Condition="Exists('icon.ico')">icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -194,7 +197,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <!-- Фото по умолчанию images/default.png добавляется в проект как Resource
-       (ПКМ по проекту -> Добавить -> Существующий элемент -> Тип сборки: Resource) -->
+  <ItemGroup>
+    <!-- Фото по умолчанию и значок подключаются как ресурсы, если файлы есть в папке проекта -->
+    <Resource Include="images\default.png" Condition="Exists('images\default.png')" />
+    <Resource Include="icon.ico" Condition="Exists('icon.ico')" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
