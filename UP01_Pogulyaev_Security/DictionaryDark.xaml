@@ -1,0 +1,174 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- ==================================================================
+         ТЁМНАЯ ТЕМА — собственный словарь стилей студента.
+         Шрифт Open Sans, тёмная гамма на основе дополнительных
+         фирменных цветов: #193D57 (глубокий синий), #256569 (тёмно-бирюзовый),
+         акценты #4DC6C5 (бирюзовый) и #DD4B42 (красный)
+         ================================================================== -->
+
+    <!-- Цветовые константы -->
+    <Color x:Key="PrimaryColor">#4DC6C5</Color>
+    <Color x:Key="DarkBlueColor">#4DC6C5</Color>
+    <Color x:Key="LightGrayColor">#256569</Color>
+    <Color x:Key="WhiteColor">#193D57</Color>
+    <Color x:Key="DangerColor">#DD4B42</Color>
+    <Color x:Key="TextColor">#EAEBED</Color>
+
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+    <SolidColorBrush x:Key="DarkBlueBrush" Color="{StaticResource DarkBlueColor}"/>
+    <SolidColorBrush x:Key="LightGrayBrush" Color="{StaticResource LightGrayColor}"/>
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource WhiteColor}"/>
+    <SolidColorBrush x:Key="DangerBrush" Color="{StaticResource DangerColor}"/>
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}"/>
+
+    <!-- Стиль окна (фон) -->
+    <Style TargetType="Window">
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!-- Стиль страницы (фон) -->
+    <Style TargetType="Page">
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!-- Стиль кнопки -->
+    <Style TargetType="Button">
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="Margin" Value="6"/>
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="Foreground" Value="#193D57"/>
+        <Setter Property="BorderBrush" Value="#256569"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="6">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                          Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#6BD5D4"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource LightGrayBrush}"/>
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Стиль кнопки удаления -->
+    <Style x:Key="DangerButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Background" Value="{StaticResource DangerBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#B03A32"/>
+    </Style>
+
+    <!-- Стиль текстового поля -->
+    <Style TargetType="TextBox">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="MinWidth" Value="180"/>
+        <Setter Property="Padding" Value="6,3"/>
+        <Setter Property="Margin" Value="6"/>
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource LightGrayBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="CaretBrush" Value="{StaticResource TextBrush}"/>
+    </Style>
+
+    <!-- Стиль поля пароля -->
+    <Style TargetType="PasswordBox">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="MinWidth" Value="180"/>
+        <Setter Property="Padding" Value="6,3"/>
+        <Setter Property="Margin" Value="6"/>
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource LightGrayBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="CaretBrush" Value="{StaticResource TextBrush}"/>
+    </Style>
+
+    <!-- Стиль выпадающего списка -->
+    <Style TargetType="ComboBox">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="MinWidth" Value="180"/>
+        <Setter Property="Margin" Value="6"/>
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Background" Value="{StaticResource LightGrayBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+    </Style>
+
+    <!-- Стиль надписей -->
+    <Style TargetType="Label">
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="Margin" Value="6"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Стиль текстовых блоков -->
+    <Style TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+    </Style>
+
+    <!-- Стиль заголовка страницы -->
+    <Style x:Key="HeaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,10"/>
+    </Style>
+
+    <!-- Стиль таблицы данных -->
+    <Style TargetType="DataGrid">
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="RowBackground" Value="{StaticResource WhiteBrush}"/>
+        <Setter Property="AlternatingRowBackground" Value="{StaticResource LightGrayBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Margin" Value="6"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+    </Style>
+
+    <!-- Стиль флажка -->
+    <Style TargetType="CheckBox">
+        <Setter Property="FontFamily" Value="Open Sans"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+        <Setter Property="Margin" Value="6"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+</ResourceDictionary>
