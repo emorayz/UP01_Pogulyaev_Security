@@ -1,0 +1,12 @@
+# Результаты сборки Visual Studio
+bin/
+obj/
+packages/
+.vs/
+*.user
+*.suo
+*.cache
+
+# Пользовательские настройки
+*.userosscache
+*.sln.docstates
