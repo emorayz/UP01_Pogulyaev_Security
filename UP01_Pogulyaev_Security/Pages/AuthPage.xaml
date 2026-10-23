@@ -1,0 +1,71 @@
+<Page x:Class="UP01_Pogulyaev_Security.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Авторизация" Loaded="Page_Loaded">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="560">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                   Text="Система управления информационной безопасностью"
+                   Style="{StaticResource HeaderTextStyle}"/>
+
+        <!-- Логин -->
+        <Label x:Name="labelLogin" Grid.Row="1" Grid.Column="0" Content="Логин"/>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="TextBoxLogin" ToolTip="Введите логин"
+                     TextChanged="TextBoxLogin_TextChanged"/>
+            <TextBlock x:Name="txtHintLogin" Text="Введите логин" Foreground="Gray"
+                       IsHitTestVisible="False" VerticalAlignment="Center"
+                       Margin="14,0,0,0"/>
+        </Grid>
+
+        <!-- Пароль -->
+        <Label x:Name="labelPass" Grid.Row="2" Grid.Column="0" Content="Пароль"/>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <PasswordBox x:Name="PasswordBox" ToolTip="Введите пароль"
+                         PasswordChanged="PasswordBox_PasswordChanged"/>
+            <TextBlock x:Name="txtHintPass" Text="Введите пароль" Foreground="Gray"
+                       IsHitTestVisible="False" VerticalAlignment="Center"
+                       Margin="14,0,0,0"/>
+        </Grid>
+
+        <!-- Капча (появляется после 3 неверных попыток) -->
+        <Label x:Name="labelCaptcha" Grid.Row="3" Grid.Column="0" Content="Капча:" Visibility="Hidden"/>
+        <TextBox x:Name="captcha" Grid.Row="3" Grid.Column="1" Visibility="Hidden"
+                 CommandManager.PreviewExecuted="textBox_PreviewExecuted"
+                 ContextMenu="{x:Null}"
+                 Height="42" Foreground="#DD4B42" FontStyle="Italic" FontWeight="Heavy"
+                 Background="{x:Null}" BorderThickness="0" FontStretch="UltraCondensed"
+                 IsReadOnly="True" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" FontSize="20"
+                 ToolTip="Перепишите символы в поле ниже (копирование запрещено)"/>
+        <TextBox x:Name="captchaInput" Grid.Row="4" Grid.Column="1" Visibility="Hidden"
+                 ToolTip="Введите символы с картинки капчи"/>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+            <Button x:Name="ButtonEnter" Content="Вход" ToolTip="Кнопка входа"
+                    Click="ButtonEnter_OnClick"/>
+            <Button x:Name="submitCaptcha" Content="Подтвердить" Visibility="Hidden"
+                    ToolTip="Подтвердить ввод капчи" Click="submitCaptcha_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal">
+            <Button x:Name="ButtonReg" Content="Регистрация" ToolTip="Кнопка регистрации"
+                    Click="ButtonReg_Click"/>
+            <Button x:Name="ButtonChangePassword" Content="Смена пароля" Width="170"
+                    ToolTip="Кнопка смены пароля" Click="ButtonChangePassword_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

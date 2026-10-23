@@ -1,0 +1,58 @@
+<Page x:Class="UP01_Pogulyaev_Security.Pages.ChangePassPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Смена пароля" Loaded="Page_Loaded">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="620">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Смена пароля"
+                   Style="{StaticResource HeaderTextStyle}"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Логин"/>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <TextBox x:Name="TbLogin" ToolTip="Введите ваш логин" TextChanged="TbLogin_TextChanged"/>
+            <TextBlock x:Name="lblLoginHint" Text="Введите логин" Foreground="Gray"
+                       IsHitTestVisible="False" VerticalAlignment="Center" Margin="14,0,0,0"/>
+        </Grid>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Текущий пароль"/>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <PasswordBox x:Name="CurrentPasswordBox" ToolTip="Введите текущий пароль"
+                         PasswordChanged="CurrentPasswordBox_PasswordChanged"/>
+            <TextBlock x:Name="lblCurrentHint" Text="Текущий пароль" Foreground="Gray"
+                       IsHitTestVisible="False" VerticalAlignment="Center" Margin="14,0,0,0"/>
+        </Grid>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="Новый пароль"/>
+        <Grid Grid.Row="3" Grid.Column="1">
+            <PasswordBox x:Name="NewPasswordBox"
+                         ToolTip="Минимум 6 символов, английская раскладка, хотя бы одна цифра"
+                         PasswordChanged="NewPasswordBox_PasswordChanged"/>
+            <TextBlock x:Name="lblNewHint" Text="Новый пароль" Foreground="Gray"
+                       IsHitTestVisible="False" VerticalAlignment="Center" Margin="14,0,0,0"/>
+        </Grid>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Подтверждение"/>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <PasswordBox x:Name="ConfirmPasswordBox" ToolTip="Повторите новый пароль"
+                         PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
+            <TextBlock x:Name="lblConfirmHint" Text="Повторите новый пароль" Foreground="Gray"
+                       IsHitTestVisible="False" VerticalAlignment="Center" Margin="14,0,0,0"/>
+        </Grid>
+
+        <Button x:Name="ButtonSavePass" Grid.Row="5" Grid.Column="1" Width="200"
+                Content="Сохранить изменения" ToolTip="Сохранить новый пароль"
+                Click="ButtonSavePass_Click"/>
+    </Grid>
+</Page>
