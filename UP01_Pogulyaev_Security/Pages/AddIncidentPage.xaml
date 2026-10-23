@@ -1,0 +1,85 @@
+<Page x:Class="UP01_Pogulyaev_Security.Pages.AddIncidentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Инцидент" Loaded="Page_Loaded">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid HorizontalAlignment="Center" Width="640" Margin="0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Инцидент информационной безопасности"
+                       Style="{StaticResource HeaderTextStyle}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Название" Margin="6" VerticalAlignment="Center"/>
+            <TextBox x:Name="TBName" Grid.Row="1" Grid.Column="1" Text="{Binding Name}"
+                     ToolTip="Краткое название инцидента" MaxLength="300"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Категория угрозы" Margin="6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CBCategory" Grid.Row="2" Grid.Column="1"
+                      DisplayMemberPath="Name" SelectedValuePath="ID"
+                      SelectedValue="{Binding Path=ThreatCategoryID}"
+                      ToolTip="Выберите категорию угрозы"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Зарегистрировал" Margin="6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CBUser" Grid.Row="3" Grid.Column="1"
+                      DisplayMemberPath="FIO" SelectedValuePath="ID"
+                      SelectedValue="{Binding Path=UserID}"
+                      ToolTip="Выберите сотрудника, зарегистрировавшего инцидент"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Дата" Margin="6" VerticalAlignment="Center"/>
+            <DatePicker x:Name="DPDate" Grid.Row="4" Grid.Column="1" Margin="6" Height="32"
+                        SelectedDate="{Binding Date}"
+                        ToolTip="Дата регистрации инцидента"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Критичность (1-5)" Margin="6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CBSeverity" Grid.Row="5" Grid.Column="1"
+                      ToolTip="1 - низкая, 5 - критическая">
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="2"/>
+                <ComboBoxItem Content="3"/>
+                <ComboBoxItem Content="4"/>
+                <ComboBoxItem Content="5"/>
+            </ComboBox>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Статус" Margin="6" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CBStatus" Grid.Row="6" Grid.Column="1"
+                      ToolTip="Выберите статус обработки инцидента">
+                <ComboBoxItem Content="Открыт"/>
+                <ComboBoxItem Content="В работе"/>
+                <ComboBoxItem Content="Закрыт"/>
+            </ComboBox>
+
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="IP-адрес" Margin="6" VerticalAlignment="Center"/>
+            <TextBox x:Name="TBIPAddress" Grid.Row="7" Grid.Column="1" Text="{Binding IPAddress}"
+                     ToolTip="IP-адрес источника (необязательно), формат: 192.168.0.1" MaxLength="50"
+                     PreviewTextInput="TBIPAddress_PreviewTextInput"/>
+
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="Описание" Margin="6" VerticalAlignment="Top"/>
+            <TextBox x:Name="TBDescription" Grid.Row="8" Grid.Column="1" Text="{Binding Description}"
+                     ToolTip="Подробное описание инцидента (необязательно)"
+                     Height="70" TextWrapping="Wrap" AcceptsReturn="True"
+                     VerticalContentAlignment="Top"/>
+
+            <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="ButtonSave" Content="Сохранить" ToolTip="Сохранить данные"
+                        Click="ButtonSave_Click"/>
+                <Button x:Name="ButtonClean" Content="Очистить" ToolTip="Очистить поля формы"
+                        Click="ButtonClean_Click"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

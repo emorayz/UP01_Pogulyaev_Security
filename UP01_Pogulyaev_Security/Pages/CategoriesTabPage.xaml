@@ -1,0 +1,35 @@
+<Page x:Class="UP01_Pogulyaev_Security.Pages.CategoriesTabPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Категории угроз" Loaded="Page_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0" x:Name="DataGridCategory"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  ToolTip="Таблица категорий угроз информационной безопасности">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Категория угрозы" Binding="{Binding Name}" Width="*"/>
+                <DataGridTemplateColumn Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="ButtonEdit" Content="Редактировать" Width="110"
+                                    ToolTip="Редактировать данные" Click="ButtonEdit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="ButtonAdd" ToolTip="Добавить данные"
+                    Content="Добавить" Click="ButtonAdd_Click"/>
+            <Button x:Name="ButtonDel" ToolTip="Удалить выбранные записи"
+                    Content="Удалить" Style="{StaticResource DangerButtonStyle}"
+                    Click="ButtonDel_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
