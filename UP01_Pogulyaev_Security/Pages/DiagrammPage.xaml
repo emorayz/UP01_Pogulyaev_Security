@@ -1,0 +1,38 @@
+<Page x:Class="UP01_Pogulyaev_Security.Pages.DiagrammPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+      xmlns:charts="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+      Title="Диаграммы" Loaded="Page_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Панель выбора пользователя, типа диаграммы и экспорта отчётов -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <ComboBox x:Name="CmbUser" MinWidth="200" DisplayMemberPath="FIO"
+                      ToolTip="Выберите сотрудника"
+                      SelectionChanged="UpdateChart"/>
+            <ComboBox x:Name="CmbDiagram" MinWidth="160"
+                      ToolTip="Выберите тип диаграммы"
+                      SelectionChanged="UpdateChart"/>
+            <Button x:Name="BtnExportWord" Content="Экспорт в Word" Width="150"
+                    ToolTip="Сформировать отчёт в Microsoft Word (.docx и .pdf)"
+                    Click="BtnExportWord_Click"/>
+            <Button x:Name="BtnExportExcel" Content="Экспорт в Excel" Width="150"
+                    ToolTip="Сформировать отчёт в Microsoft Excel (.xlsx)"
+                    Click="BtnExportExcel_Click"/>
+        </StackPanel>
+
+        <!-- Диаграмма инцидентов (элемент добавлен через WindowsFormsHost) -->
+        <WindowsFormsHost Grid.Row="1" Margin="5">
+            <charts:Chart x:Name="ChartIncidents">
+                <charts:Chart.Legends>
+                    <charts:Legend/>
+                </charts:Chart.Legends>
+            </charts:Chart>
+        </WindowsFormsHost>
+    </Grid>
+</Page>
